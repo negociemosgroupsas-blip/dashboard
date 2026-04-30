@@ -217,8 +217,8 @@ body{
       <div class="mc pu" style="grid-column:1/-1;"><div class="lbl">Total aval recaudado de todos los créditos finalizados</div><div class="val lg" style="color:#AFA9EC;" data-k="aval_total">$241.362.996</div><div class="sub p">383 créditos finalizados con aval</div></div>
     </div>
     <div class="cc">
-      <div class="ct">Aval recaudado por año (M$)</div>
-      <div style="position:relative;width:100%;height:150px;"><canvas id="ch_aval"></canvas></div>
+<div class="ct">Colocación mensual 2024 (M$)</div>
+      <div style="position:relative;width:100%;height:150px;"><canvas id="ch_2024"></canvas></div>
     </div>
     </div>
 
@@ -576,6 +576,7 @@ async function cargarDatos() {
     
     // Populate variables
     col2025 = d.neup.col_2025_mensual;
+    col2024 = d.neup.col_2024_mensual;
     col2026 = d.neup.col_2026_mensual;
     hist18L = d.neup.evolucion_18m_labels;
     hist18V = d.neup.evolucion_18m_vals;
@@ -720,6 +721,7 @@ function actualizarTarjetas(d) {
 }
 
 function usarDatosFallback() {
+  col2024=[104.6, 72.2, 67.3, 94.6, 74.2, 76.5, 52.9, 83.3, 62.1, 59.2, 81.6, 107.6];
   col2025=[89.9,127.8,122.2,120.6,108.5,93.3,165.8,174.4,102.5,129.4,139.0,150.4];
   col2026=[136.1,119.7,96.3,198.4];
   hist18L=['Nov 24','Dic 24','Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'];
@@ -788,17 +790,10 @@ function fmtM(n){return '$'+(n/1e6).toFixed(2)+' M';}
 // ─── Init Charts (llamado desde cargarDatos) ───
 function initCharts() {
 // ─── Financiera ───
-new Chart(document.getElementById('ch_aval'),{
+new Chart(document.getElementById('ch_2024'),{
   type:'bar',
-  data:{labels:avalAnios,datasets:[{data:avalVals,backgroundColor:[PUT,PUT,PUT,'rgba(175,169,236,.08)'],borderColor:[PU,PU,PU,'rgba(175,169,236,.4)'],borderWidth:1.5,borderRadius:4,borderSkipped:false}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{
-        label: function(c) {
-          return ' $' + c.formattedValue + ' M';
-        },
-        afterLabel: function(c) {
-          return ' ' + asesMesData[c.dataIndex].c + ' créditos';
-        }
-      }}},scales:{x:{grid:{color:gr},ticks:{color:ax,font:{size:11}}},y:{grid:{color:gr},ticks:{color:ax,font:{size:10},callback:v=>v+'M'},beginAtZero:true}}}
+  data:{labels:MESES,datasets:[{data:col2024,backgroundColor:GT,borderColor:GOLD,borderWidth:1.5,borderRadius:4,borderSkipped:false}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+c.formattedValue+' M'}}},scales:{x:{grid:{color:gr},ticks:{color:ax,maxRotation:0,autoSkip:false,font:{size:10}}},y:{grid:{color:gr},ticks:{color:ax,font:{size:10},callback:v=>v+'M'},beginAtZero:true}}}
 });
 
 new Chart(document.getElementById('ch_2025'),{
@@ -1436,6 +1431,7 @@ async function cargarDatos() {
     const d = await res.json();
     
     // Populate variables
+    col2024 = d.neup.col_2024_mensual;
     col2025 = d.neup.col_2025_mensual;
     col2026 = d.neup.col_2026_mensual;
     hist18L = d.neup.evolucion_18m_labels;
