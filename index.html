@@ -636,27 +636,27 @@ async function cargarDatos(){
     document.getElementById('v-acu-cap').textContent='$'+(ab.acuerdo_pago.capital/1e6).toFixed(1)+' M · $'+(ab.acuerdo_pago.pagado/1e6).toFixed(1)+' M pagado';
     document.getElementById('v-ges-cli').textContent=ab.gestion.clientes;
     document.getElementById('v-ges-cap').textContent='$'+(ab.gestion.capital/1e6).toFixed(1)+' M';
-    // Estudios hoy
+// Estudios hoy
     const es=d.estudios;
-    document.getElementById('v-hoy-total').textContent=es.hoy_total;
-    document.getElementById('v-hoy-ap').textContent=es.hoy_aprobados;
-    document.getElementById('v-hoy-nor').textContent=es.hoy_no_r;
-    document.getElementById('v-hoy-noc').textContent=es.hoy_no_c;
-    document.getElementById('v-hoy-dia').textContent='día '+es.hoy_dia;
+    if(document.getElementById('v-hoy-total'))document.getElementById('v-hoy-total').textContent=es.hoy_total;
+    if(document.getElementById('v-hoy-ap'))document.getElementById('v-hoy-ap').textContent=es.hoy_aprobados;
+    if(document.getElementById('v-hoy-nor'))document.getElementById('v-hoy-nor').textContent=es.hoy_no_r;
+    if(document.getElementById('v-hoy-noc'))document.getElementById('v-hoy-noc').textContent=es.hoy_no_c;
+    if(document.getElementById('v-hoy-dia'))document.getElementById('v-hoy-dia').textContent='día '+es.hoy_dia;
     if(document.getElementById('v-mes-res-nombre'))document.getElementById('v-mes-res-nombre').textContent=es.mes_nombre;
-    document.getElementById('v-est-total').textContent=es.mes_total;
-    document.getElementById('v-est-ap').textContent=es.mes_aprobados;
-    document.getElementById('v-est-nor').textContent=es.mes_no_r;
-    document.getElementById('v-est-noc').textContent=es.mes_no_c;
-    document.getElementById('v-est-leg').textContent=es.mes_legalizados;
-    document.getElementById('v-est-noleg').textContent=es.mes_no_legalizados;
+    if(document.getElementById('v-est-total'))document.getElementById('v-est-total').textContent=es.mes_total;
+    if(document.getElementById('v-est-ap'))document.getElementById('v-est-ap').textContent=es.mes_aprobados;
+    if(document.getElementById('v-est-nor'))document.getElementById('v-est-nor').textContent=es.mes_no_r;
+    if(document.getElementById('v-est-noc'))document.getElementById('v-est-noc').textContent=es.mes_no_c;
+    if(document.getElementById('v-est-leg'))document.getElementById('v-est-leg').textContent=es.mes_legalizados;
+    if(document.getElementById('v-est-noleg'))document.getElementById('v-est-noleg').textContent=es.mes_no_legalizados;
     const pct=es.mes_total>0?Math.round(es.mes_aprobados/es.mes_total*1000)/10:0;
-    document.getElementById('v-est-pct').textContent=pct+'%';
-    document.getElementById('v-ap-leg-de').textContent=es.mes_aprobados;
+    if(document.getElementById('v-est-pct'))document.getElementById('v-est-pct').textContent=pct+'%';
+    if(document.getElementById('v-ap-leg-de'))document.getElementById('v-ap-leg-de').textContent=es.mes_aprobados;
     const tasaLeg=es.mes_aprobados>0?Math.round(es.mes_legalizados/es.mes_aprobados*1000)/10:0;
-    document.getElementById('v-leg-li').textContent='Legalizados · '+es.mes_legalizados+' ('+tasaLeg+'%)';
-    document.getElementById('v-noleg-li').textContent='No legalizados · '+es.mes_no_legalizados+' ('+(100-tasaLeg)+'%)';
-    document.getElementById('v-tasa-leg').textContent=tasaLeg+'%';
+    if(document.getElementById('v-leg-li'))document.getElementById('v-leg-li').textContent='Legalizados · '+es.mes_legalizados+' ('+tasaLeg+'%)';
+    if(document.getElementById('v-noleg-li'))document.getElementById('v-noleg-li').textContent='No legalizados · '+es.mes_no_legalizados+' ('+(100-tasaLeg)+'%)';
+    if(document.getElementById('v-tasa-leg'))document.getElementById('v-tasa-leg').textContent=tasaLeg+'%';
 
     // Mayo resumen KPIs
     if(es){
