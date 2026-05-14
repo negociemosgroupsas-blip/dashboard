@@ -690,14 +690,15 @@ async function cargarDatos(){
     // Rebuild charts if already visible
     window._dynData=d;
     window._ng=false;window._pm=false;
-    if(loadEl)loadEl.remove();
+if(loadEl)loadEl.remove();
+  initEstHist(d);
   }catch(err){
     console.error('Error:',err);
     usarFallback();
+    initEstHist(null);
     if(loadEl)loadEl.textContent='⚠ Usando datos guardados';
   }
   if(!built.ng&&document.getElementById('db-ng').style.display==='block'){buildNG();built.ng=true;}
-  initEstHist(d);
   if(!built.pm&&document.getElementById('db-pm').style.display==='block'){buildPM();built.pm=true;}
 }
 
