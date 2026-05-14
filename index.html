@@ -643,7 +643,7 @@ async function cargarDatos(){
     document.getElementById('v-hoy-nor').textContent=es.hoy_no_r;
     document.getElementById('v-hoy-noc').textContent=es.hoy_no_c;
     document.getElementById('v-hoy-dia').textContent='día '+es.hoy_dia;
-    document.getElementById('v-mes-res-nombre').textContent=es.mes_nombre;
+    if(document.getElementById('v-mes-res-nombre'))document.getElementById('v-mes-res-nombre').textContent=es.mes_nombre;
     document.getElementById('v-est-total').textContent=es.mes_total;
     document.getElementById('v-est-ap').textContent=es.mes_aprobados;
     document.getElementById('v-est-nor').textContent=es.mes_no_r;
