@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Informe Mensual · Mayo 2026 · Negociemos Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<style>
+  :root{
+    --navy:#161C36; --navy2:#1B2245; --navy3:#232C52;
+    --gold:#C8A24B; --gold-soft:#E0C684; --ice:#9FB4D6;
+    --cream:#F5F2EA; --cream2:#EDE8DB; --ink:#1B2245; --muted:#6A7088;
+    --line:rgba(27,34,69,.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Archivo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:'Fraunces',serif}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(22,28,54,.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,162,75,.25)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px;overflow-x:auto}
+  nav .brand{font-family:'Fraunces';font-weight:600;color:#fff;font-size:17px;white-space:nowrap;letter-spacing:.3px}
+  nav .brand b{color:var(--gold)}
+  nav a{color:var(--ice);text-decoration:none;font-size:13px;font-weight:500;white-space:nowrap;transition:color .2s;letter-spacing:.2px}
+  nav a:hover{color:var(--gold-soft)}
+  nav .sp{flex:1}
+
+  /* HERO */
+  header.hero{background:linear-gradient(155deg,var(--navy) 0%,var(--navy2) 60%,var(--navy3) 100%);color:#fff;padding:70px 0 60px;position:relative;overflow:hidden}
+  header.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(200,162,75,.18),transparent 70%)}
+  .eyebrow{font-size:12.5px;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+  header.hero h1{font-size:clamp(38px,6vw,68px);font-weight:600;line-height:1.02;letter-spacing:-.5px}
+  header.hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero-sub{margin-top:20px;color:var(--ice);font-size:16px;max-width:560px}
+  .hero-meta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta span{border:1px solid rgba(200,162,75,.4);color:var(--gold-soft);font-size:12.5px;padding:7px 14px;border-radius:40px;font-weight:500}
+
+  /* SECTIONS */
+  section{padding:64px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:8px}
+  .sec-num{font-family:'Fraunces';font-size:15px;color:var(--gold);font-weight:600}
+  .sec-head h2{font-size:clamp(26px,3.6vw,38px);font-weight:600;letter-spacing:-.3px}
+  .sec-desc{color:var(--muted);font-size:15px;margin-bottom:34px;max-width:620px}
+
+  /* KPI GRID */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 22px;position:relative;overflow:hidden}
+  .kpi::before{content:"";position:absolute;left:0;top:0;width:100%;height:3px;background:var(--gold)}
+  .kpi .v{font-family:'Fraunces';font-size:34px;font-weight:600;line-height:1;color:var(--navy2)}
+  .kpi .l{font-size:13px;font-weight:600;margin-top:10px}
+  .kpi .s{font-size:12px;color:var(--muted);margin-top:3px}
+
+  /* CARDS / CHART */
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+  .grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
+  .grid2b{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .card h3{font-size:18px;font-weight:600;margin-bottom:4px}
+  .card .h-sub{font-size:13px;color:var(--muted);margin-bottom:18px}
+  .chart-box{position:relative;height:330px}
+  .chart-box.sm{height:280px}
+
+  /* DESEMBOLSOS highlight */
+  .desemb{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;border:none}
+  .desemb h3,.desemb .big{color:#fff}
+  .month-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:22px}
+  .mcard{background:rgba(255,255,255,.06);border:1px solid rgba(200,162,75,.25);border-radius:12px;padding:16px 12px;text-align:center}
+  .mcard .mn{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ice);font-weight:600}
+  .mcard .mv{font-family:'Fraunces';font-size:24px;font-weight:600;color:#fff;margin-top:6px;line-height:1}
+  .mcard .mu{font-size:11px;color:var(--gold-soft);margin-top:3px}
+  .mcard.peak{background:rgba(200,162,75,.16);border-color:var(--gold)}
+
+  /* stat inline rows */
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:6px}
+  .stat{padding:18px;border:1px solid var(--line);border-radius:12px;background:#fff}
+  .stat .v{font-family:'Fraunces';font-size:26px;font-weight:600;color:var(--navy2)}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:4px}
+
+  /* cartera */
+  .cart-cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+  .cart{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;border-top:4px solid var(--muted)}
+  .cart.gold{border-top-color:var(--gold)}
+  .cart .t{font-size:15px;font-weight:600}
+  .cart .v{font-family:'Fraunces';font-size:42px;font-weight:600;color:var(--navy2);line-height:1;margin:8px 0}
+  .cart.gold .v{color:var(--gold)}
+  .cart .d{font-size:13px;color:var(--muted)}
+  .cart .d b{color:var(--ink)}
+  .total-band{background:var(--navy2);color:#fff;border-radius:14px;padding:22px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .total-band .tl{font-size:12.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+  .total-band .ts{font-size:13px;color:var(--ice);margin-top:3px}
+  .total-band .tv{font-family:'Fraunces';font-size:40px;font-weight:600}
+
+  /* conclusiones */
+  .concl{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .cpoint{display:flex;gap:16px;align-items:flex-start}
+  .cpoint .n{font-family:'Fraunces';font-size:22px;font-weight:600;color:#fff;background:var(--gold);min-width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center}
+  .cpoint .ct{font-size:16px;font-weight:600;color:var(--gold)}
+  .cpoint .cd{font-size:14px;color:var(--ice);margin-top:3px}
+  .concl-sec{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%)}
+  .concl-sec h2{color:#fff}.concl-sec .sec-num{color:var(--gold-soft)}
+
+  footer{background:var(--navy);color:var(--ice);text-align:center;padding:40px 0;font-size:13px}
+  footer b{color:var(--gold)}
+
+  @media(max-width:860px){
+    .kpis,.statrow{grid-template-columns:repeat(2,1fr)}
+    .grid2,.grid2b,.cart-cards,.concl{grid-template-columns:1fr}
+    .month-row{grid-template-columns:repeat(2,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <span class="brand">NE <b>UP</b> · Negociemos Group</span>
+  <span class="sp"></span>
+  <a href="#resumen">Resumen</a>
+  <a href="#desembolsos">Desembolsos 2026</a>
+  <a href="#colocacion">Colocación</a>
+  <a href="#asesores">Asesores</a>
+  <a href="#estudios">Estudios</a>
+  <a href="#cartera">Cartera</a>
+  <a href="#protect">Protect Motos</a>
+  <a href="#conclusiones">Conclusiones</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Negociemos Group S.A.S. · NE UP</div>
+  <h1>Informe Mensual<br><em>Mayo 2026</em></h1>
+  <p class="hero-sub">Informe a socios · resultados consolidados de colocación de crédito, gestión de cartera y Protect Motos.</p>
+  <div class="hero-meta">
+    <span>Corte: mayo 2026</span><span>Periodo 2023 – 2026</span><span>Financiación de motocicletas</span>
+  </div>
+</div></header>
+
+<!-- RESUMEN -->
+<section id="resumen"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">01</span><h2>Resumen ejecutivo</h2></div>
+  <p class="sec-desc">Indicadores clave del negocio al corte de mayo de 2026.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="v">$3.831 M</div><div class="l">Colocación histórica</div><div class="s">1.009 créditos · 2023–2026</div></div>
+    <div class="kpi"><div class="v">+62,8%</div><div class="l">Crecimiento 2025</div><div class="s">vs. 2024 ($1.523,8 M)</div></div>
+    <div class="kpi"><div class="v">958</div><div class="l">Protect Motos activos</div><div class="s">1.280 realizados histórico</div></div>
+    <div class="kpi"><div class="v">$124,3 M</div><div class="l">En gestión de cobro</div><div class="s">67 clientes (mora + jurídico)</div></div>
+  </div>
+</div></section>
+
+<!-- DESEMBOLSOS 2026 -->
+<section id="desembolsos"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">02</span><h2>Desembolsos por mes · 2026</h2></div>
+  <p class="sec-desc">Valor colocado (desembolsado) en cada mes de 2026. La meta mensual es de $200 M; abril y mayo la superaron ampliamente.</p>
+  <div class="card desemb">
+    <h3>Colocación mensual 2026 — millones COP</h3>
+    <div class="h-sub" style="color:var(--ice)">Acumulado enero–mayo: <b style="color:#fff">$1.081,5 M</b> en 214 créditos</div>
+    <div class="chart-box"><canvas id="chDesemb"></canvas></div>
+    <div class="month-row">
+      <div class="mcard"><div class="mn">Enero</div><div class="mv">136,1</div><div class="mu">M COP</div></div>
+      <div class="mcard"><div class="mn">Febrero</div><div class="mv">119,7</div><div class="mu">M COP</div></div>
+      <div class="mcard"><div class="mn">Marzo</div><div class="mv">100,3</div><div class="mu">M COP</div></div>
+      <div class="mcard peak"><div class="mn">Abril</div><div class="mv">324,3</div><div class="mu">M COP</div></div>
+      <div class="mcard peak"><div class="mn">Mayo</div><div class="mv">401,1</div><div class="mu">M COP</div></div>
+    </div>
+  </div>
+  <div class="total-band" style="margin-top:18px">
+    <div><div class="tl">Saldo adeudado a Dugomotos</div><div class="ts">Corte 31/05/2026</div></div>
+    <div class="tv">$323.913.929</div>
+  </div>
+  <div class="total-band" style="background:var(--gold);margin-top:16px">
+    <div><div class="tl" style="color:var(--navy)">Recaudo de cuotas de los créditos · mayo 2026</div><div class="ts" style="color:rgba(27,34,69,.75)">Pagos de cuotas recibidos en el mes</div></div>
+    <div class="tv" style="color:var(--navy)">$176.940.603</div>
+  </div>
+</div></section>
+<section id="colocacion"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">03</span><h2>Colocación de créditos</h2></div>
+  <p class="sec-desc">Evolución anual del valor colocado. 2026 es parcial (enero–mayo).</p>
+  <div class="grid2">
+    <div class="card"><h3>Colocación anual</h3><div class="h-sub">Millones COP · número de créditos por año</div>
+      <div class="chart-box"><canvas id="chColoc"></canvas></div></div>
+    <div class="card"><h3>Hitos</h3><div class="h-sub">Crecimiento y volumen</div>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:6px">
+        <div class="stat"><div class="v">+223%</div><div class="l">2024 vs 2023</div></div>
+        <div class="stat"><div class="v">+62,8%</div><div class="l">2025 vs 2024</div></div>
+        <div class="stat"><div class="v">$1.081 M</div><div class="l">Colocado ene–may 2026 · 214 créditos</div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ASESORES -->
+<section id="asesores"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">04</span><h2>Asesores</h2></div>
+  <p class="sec-desc">Valor colocado por asesor (histórico) y distribución por tipo de moto.</p>
+  <div class="grid2">
+    <div class="card"><h3>Colocación por asesor</h3><div class="h-sub">Millones COP</div>
+      <div class="chart-box"><canvas id="chAses"></canvas></div></div>
+    <div class="card"><h3>Tipo de moto</h3><div class="h-sub">1.009 créditos colocados</div>
+      <div class="chart-box sm"><canvas id="chTipo"></canvas></div></div>
+  </div>
+</div></section>
+
+<!-- ESTUDIOS -->
+<section id="estudios"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">05</span><h2>Estudios de crédito</h2></div>
+  <p class="sec-desc">Embudo de viabilidad de mayo 2026 y evolución mensual del año.</p>
+  <div class="statrow" style="margin-bottom:22px">
+    <div class="stat"><div class="v">691</div><div class="l">Estudiados en mayo</div></div>
+    <div class="stat"><div class="v">223</div><div class="l">Aprobados · 32,3%</div></div>
+    <div class="stat"><div class="v">63</div><div class="l">Legalizados · 28,3% de aprobados</div></div>
+    <div class="stat"><div class="v">468</div><div class="l">No viables · 298 reporte / 170 capacidad</div></div>
+  </div>
+  <div class="grid2b">
+    <div class="card"><h3>Créditos legalizados mes a mes · 2026</h3><div class="h-sub">Número de créditos · enero–mayo · acumulado 213</div>
+      <div class="chart-box"><canvas id="chLegal"></canvas></div></div>
+    <div class="card"><h3>Score de los legalizados</h3><div class="h-sub">Mayo 2026 · 63 legalizados</div>
+      <div class="chart-box"><canvas id="chScore"></canvas></div></div>
+  </div>
+</div></section>
+
+<!-- CARTERA -->
+<section id="cartera"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">06</span><h2>Gestión de cartera</h2></div>
+  <p class="sec-desc">Capital en proceso de cobranza al corte del 31/05/2026.</p>
+  <div class="cart-cards">
+    <div class="cart"><div class="t">Mora administrativa</div><div class="v">$21,5 M</div>
+      <div class="d"><b>33 clientes</b> · capital adeudado $98,2 M</div></div>
+    <div class="cart gold"><div class="t">Cobro jurídico</div><div class="v">$102,8 M</div>
+      <div class="d"><b>34 deudores con saldo</b> · Demanda 16 · Acuerdo 13 · Gestión 5</div></div>
+  </div>
+  <div class="total-band">
+    <div><div class="tl">Total en gestión de cobro</div><div class="ts">67 clientes (mora administrativa + cobro jurídico)</div></div>
+    <div class="tv">$124,3 M</div>
+  </div>
+</div></section>
+
+<!-- PROTECT -->
+<section id="protect"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">07</span><h2>Protect Motos</h2></div>
+  <p class="sec-desc">Protección y RC, contratos por mes y composición de la cartera vigente.</p>
+  <div class="kpis" style="margin-bottom:22px">
+    <div class="kpi"><div class="v">1.280</div><div class="l">Realizados histórico</div></div>
+    <div class="kpi"><div class="v">958</div><div class="l">Activos</div><div class="s">322 cancelados</div></div>
+    <div class="kpi"><div class="v">465</div><div class="l">Con RC</div><div class="s">$54,8 M en RC</div></div>
+    <div class="kpi"><div class="v">$335,2 M</div><div class="l">Recibido por Dugomotos</div></div>
+  </div>
+  <div class="grid2b" style="margin-bottom:22px">
+    <div class="card"><h3>Contratos por mes · 2026</h3><div class="h-sub">Número de contratos</div>
+      <div class="chart-box sm"><canvas id="chPmes"></canvas></div></div>
+    <div class="card"><h3>Por marca</h3><div class="h-sub">Contratos vigentes</div>
+      <div class="chart-box sm"><canvas id="chMarca"></canvas></div></div>
+  </div>
+  <div class="card">
+    <h3>Movimientos de mayo 2026</h3>
+    <div class="statrow" style="grid-template-columns:repeat(3,1fr);margin-top:14px">
+      <div class="stat"><div class="v">$17.546.655</div><div class="l">Ingresó al banco</div></div>
+      <div class="stat"><div class="v">$1.551.000</div><div class="l">33 asistencias AP · $47.000 c/u</div></div>
+      <div class="stat"><div class="v">$8.677.000</div><div class="l">Reclamación ADX 150 (2025) · bono</div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- CONCLUSIONES -->
+<section id="conclusiones" class="concl-sec"><div class="wrap">
+  <div class="sec-head"><span class="sec-num">08</span><h2>Conclusiones y próximos pasos</h2></div>
+  <div class="concl" style="margin-top:14px">
+    <div class="cpoint"><div class="n">01</div><div><div class="ct">Crecimiento sólido</div><div class="cd">La colocación se ha más que triplicado desde 2023 y mantiene tracción: $1.081 M en lo corrido de 2026.</div></div></div>
+    <div class="cpoint"><div class="n">02</div><div><div class="ct">Meta superada</div><div class="cd">Abril ($324 M) y mayo ($401 M) superaron la meta mensual de $200 M en colocación.</div></div></div>
+    <div class="cpoint"><div class="n">03</div><div><div class="ct">Protect Motos consolidado</div><div class="cd">958 contratos activos y $54,8 M en RC fortalecen el ingreso recurrente del negocio.</div></div></div>
+    <div class="cpoint"><div class="n">04</div><div><div class="ct">Foco en recuperación</div><div class="cd">$124,3 M en cartera de cobro (67 clientes) son la prioridad operativa del semestre.</div></div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <b>Negociemos Group S.A.S.</b> · NIT 901.715.327-0 · Medellín &nbsp;·&nbsp; Informe gerencial · corte mayo 2026
+</div></footer>
+
+<script>
+Chart.register(ChartDataLabels);
+Chart.defaults.font.family="'Archivo',sans-serif";
+const NAVY="#1B2245",GOLD="#C8A24B",GOLDS="#E0C684",ICE="#9FB4D6",GRAY="#C8CCD8";
+const money=v=>"$"+v.toLocaleString('es-CO',{minimumFractionDigits:1,maximumFractionDigits:1});
+const noLbl={datalabels:{display:false}};
+
+// DESEMBOLSOS 2026
+new Chart(chDesemb,{type:'bar',
+ data:{labels:['Ene','Feb','Mar','Abr','May'],datasets:[{data:[136.1,119.7,100.3,324.3,401.1],
+   backgroundColor:['#3B4470','#3B4470','#3B4470',GOLD,GOLD],borderRadius:8,maxBarThickness:74}]},
+ options:{plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:'#fff',font:{family:"'Fraunces'",weight:600,size:15},formatter:v=>v.toFixed(1)},
+   tooltip:{callbacks:{label:c=>money(c.raw)+' M'}}},
+   layout:{padding:{top:24}},
+   scales:{y:{display:false,grace:'18%'},x:{ticks:{color:ICE,font:{size:13,weight:600}},grid:{display:false}}}}});
+
+// COLOCACION anual
+new Chart(chColoc,{type:'bar',
+ data:{labels:['2023','2024','2025','2026 *'],datasets:[{data:[289.9,936.1,1523.8,1081.5],
+   backgroundColor:[GRAY,GRAY,NAVY,GOLD],borderRadius:8,maxBarThickness:90}]},
+ options:{plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{family:"'Fraunces'",weight:600,size:14},formatter:v=>v.toLocaleString('es-CO',{maximumFractionDigits:0})},
+   tooltip:{callbacks:{label:c=>money(c.raw)+' M'}}},
+   layout:{padding:{top:24}},
+   scales:{y:{display:false,grace:'15%'},x:{ticks:{color:'#6A7088',font:{size:13,weight:600}},grid:{display:false}}}}});
+
+// ASESORES
+new Chart(chAses,{type:'bar',
+ data:{labels:['Sandra','Natalia','Lina','Vanessa','Luis','Emmanuel','Otros'],
+   datasets:[{data:[970.4,855.9,757.3,472.0,384.5,159.3,192.5],backgroundColor:NAVY,borderRadius:6,maxBarThickness:26}]},
+ options:{indexAxis:'y',plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{weight:700,size:12},formatter:v=>v.toLocaleString('es-CO',{maximumFractionDigits:0})},
+   tooltip:{callbacks:{label:c=>money(c.raw)+' M'}}},
+   layout:{padding:{right:42}},
+   scales:{x:{display:false},y:{ticks:{color:'#1B2245',font:{size:12.5,weight:600}},grid:{display:false}}}}});
+
+// TIPO MOTO
+new Chart(chTipo,{type:'doughnut',
+ data:{labels:['Usadas','Nuevas'],datasets:[{data:[632,377],backgroundColor:[NAVY,GOLD],borderWidth:0}]},
+ options:{cutout:'62%',plugins:{legend:{position:'bottom',labels:{color:'#1B2245',font:{size:13,weight:600},padding:16}},
+   datalabels:{color:'#fff',font:{family:"'Fraunces'",weight:600,size:18},formatter:(v,c)=>{let t=c.chart.data.datasets[0].data.reduce((a,b)=>a+b);return Math.round(v/t*100)+'%'}}}}});
+
+// LEGALIZADOS mes a mes 2026 (en Estudios)
+new Chart(chLegal,{type:'bar',
+ data:{labels:['Ene','Feb','Mar','Abr','May'],datasets:[{data:[33,32,28,57,63],
+   backgroundColor:[NAVY,NAVY,NAVY,GOLD,GOLD],borderRadius:7,maxBarThickness:60}]},
+ options:{plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{family:"'Fraunces'",weight:600,size:15}},
+   tooltip:{callbacks:{label:c=>c.raw+' créditos legalizados'}}},
+   layout:{padding:{top:22}},
+   scales:{y:{display:false,grace:'18%'},x:{grid:{display:false},ticks:{color:'#6A7088',font:{size:13,weight:600}}}}}});
+
+// SCORE legalizados
+new Chart(chScore,{type:'bar',
+ data:{labels:['0–500','501–600','601–700','701–800','>800'],datasets:[{data:[6,5,15,27,10],
+   backgroundColor:[GRAY,GRAY,GOLDS,GOLD,NAVY],borderRadius:6,maxBarThickness:54}]},
+ options:{plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{weight:700,size:13}}},
+   layout:{padding:{top:18}},
+   scales:{y:{display:false,grace:'20%'},x:{grid:{display:false},ticks:{color:'#6A7088',font:{size:11.5,weight:600}}}}}});
+
+// PROTECT mes 2026
+new Chart(chPmes,{type:'bar',
+ data:{labels:['Ene','Feb','Mar','Abr','May'],datasets:[{data:[70,111,78,101,66],
+   backgroundColor:NAVY,borderRadius:6,maxBarThickness:56}]},
+ options:{plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{weight:700,size:13}}},
+   layout:{padding:{top:18}},
+   scales:{y:{display:false,grace:'18%'},x:{grid:{display:false},ticks:{color:'#6A7088',font:{weight:600}}}}}});
+
+// PROTECT marca
+new Chart(chMarca,{type:'bar',
+ data:{labels:['SYM','Hero','Bajaj','AKT','TVS','Victory','Honda','Suzuki','Yamaha','Otras'],
+   datasets:[{data:[303,290,72,65,49,36,35,31,27,48],backgroundColor:GOLD,borderRadius:5,maxBarThickness:20}]},
+ options:{indexAxis:'y',plugins:{legend:{display:false},
+   datalabels:{anchor:'end',align:'end',color:NAVY,font:{weight:700,size:11}}},
+   layout:{padding:{right:34}},
+   scales:{x:{display:false},y:{grid:{display:false},ticks:{color:'#1B2245',font:{size:11.5,weight:600}}}}}});
+</script>
+</body>
+</html>
