@@ -121,58 +121,58 @@ const DATOS = {
      =========================================================== */
 
   // --- PORTADA (fecha del día) ---
-  fecha:      "9 de junio de 2026",   // título en cursiva de la portada
-  dia_etq:    "Día: 9 jun 2026",
+  fecha:      "10 de junio de 2026",   // título en cursiva de la portada
+  dia_etq:    "Día: 10 jun 2026",
   mes_curso:  "Mes en curso: junio 2026",
 
   // --- 01 · RESUMEN DEL DÍA (4 indicadores) ---  tag: "HOY" o "MES"
   resumen: [
-    { valor:"$13,9 M",  titulo:"Colocado hoy",        nota:"créditos desembolsados hoy", tag:"HOY" },
+    { valor:"$0 M",  titulo:"Colocado hoy",        nota:"créditos desembolsados hoy", tag:"HOY" },
     { valor:"$65,0 M",  titulo:"Colocado en el mes",  nota:"acumulado mes en curso",     tag:"MES" },
-    { valor:"$4,5 M",   titulo:"Recaudado hoy",       nota:"cuotas recibidas hoy",       tag:"HOY" },
+    { valor:"$3,4 M",   titulo:"Recaudado hoy",       nota:"cuotas recibidas hoy",       tag:"HOY" },
     { valor:"$124,3 M", titulo:"En gestión de cobro", nota:"67 clientes (mora + jurídico)", tag:"MES" },
   ],
 
   // --- 02 · DESEMBOLSOS DÍA A DÍA (mes en curso) --- agrega un valor cada día
   mes_actual_label: "Jun",          // mes en curso (etiqueta corta para la gráfica anual y mensual)
   dia_mes:    "junio 2026",
-  dia_labels: ["1","2","3","4","5","6","7","8","9"],
-  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93],   // millones COP por día
+  dia_labels: ["1","2","3","4","5","6","7","8","9","10"],
+  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93, 0],   // millones COP por día
   desembolsos_creditos: "8 créditos",   // nº de créditos del mes en curso (texto libre)
 
   // --- 02 · DATOS DEL DÍA (saldo, recaudo) ---
-  saldo_dugomotos:      "$323.913.929",
+  saldo_dugomotos:      "$359.019.953",
   saldo_dugomotos_corte:"Corte 9 jun 2026",
-  recaudo_cuotas:       "$43.800.000",
+  recaudo_cuotas:       "$43.922.604",
   recaudo_cuotas_periodo:"Jun 2026",
 
   // --- 05 · ESTUDIOS · fila HOY ---
   estudios_hoy: [
-    { valor:"30", nota:"Estudiados hoy" },
-    { valor:"11", nota:"Aprobados hoy" },
-    { valor:"2",  nota:"Legalizados hoy" },
-    { valor:"0",  nota:"Negado por capacidad" },
-    { valor:"0",  nota:"Negado por reporte" },
+    { valor:"11", nota:"Estudiados hoy" },
+    { valor:"3", nota:"Aprobados hoy" },
+    { valor:"0",  nota:"Legalizados hoy" },
+    { valor:"1",  nota:"Negado por capacidad" },
+    { valor:"7",  nota:"Negado por reporte" },
   ],
   // --- 05 · ESTUDIOS · fila MES (acumulado mes) ---
   estudios_mes: [
-    { valor:"168", nota:"Estudiados en el mes" },
-    { valor:"54",  nota:"Aprobados en el mes" },
+    { valor:"179", nota:"Estudiados en el mes" },
+    { valor:"57",  nota:"Aprobados en el mes" },
     { valor:"8",   nota:"Legalizados en el mes" },
-    { valor:"0",   nota:"Negado por capacidad" },
-    { valor:"0",   nota:"Negado por reporte" },
+    { valor:"39",   nota:"Negado por capacidad" },
+    { valor:"82",   nota:"Negado por reporte" },
   ],
 
   // --- 06 · GESTIÓN DE CARTERA (foto del día) ---
-  cartera_fecha: "9 jun 2026",
-  mora_valor:    "$21,5 M",
-  mora_clientes: "33 clientes",
-  mora_detalle:  "capital adeudado $98,2 M",
+  cartera_fecha: "10 jun 2026",
+  mora_valor:    "$21,8 M",
+  mora_clientes: "34 clientes",
+  mora_detalle:  "capital adeudado $97,8 M",
   juridico_valor:   "$102,8 M",
-  juridico_deudores:"34 deudores con saldo",
-  juridico_detalle: "Demanda 16 · Acuerdo 13 · Gestión 5",
-  cobro_total:        "$124,3 M",
-  cobro_total_clientes:"67 clientes (mora administrativa + cobro jurídico)",
+  juridico_deudores:"35 deudores con saldo",
+  juridico_detalle: "Demanda 16 · Acuerdo 13 · Gestión 6",
+  cobro_total:        "$124,6 M",
+  cobro_total_clientes:"69 clientes (mora administrativa + cobro jurídico)",
 
   // --- 07 · PROTECT MOTOS · KPIs ---  tag: "HOY" o "MES"
   protect_kpis: [
@@ -212,7 +212,7 @@ const DATOS = {
   legal_destacar: [false,false,false,true,true,false],
   legal_acumulado:"221",
   score_labels:   ["0–500","501–600","601–700","701–800",">800"],
-  score_valores:  [0, 0, 0, 2, 5],
+  score_valores:  [0, 0, 0, 3, 5],
 
   // --- 07 · PROTECT · contratos por mes ---
   protect_meses:   ["Ene","Feb","Mar","Abr","May","Jun"],
