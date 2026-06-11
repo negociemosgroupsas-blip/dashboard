@@ -137,40 +137,40 @@ const DATOS = {
 
   // --- 01 · RESUMEN DEL DÍA (4 indicadores) ---  tag: "HOY" o "MES"
   resumen: [
-    { valor:"$0 M",     titulo:"Colocado hoy",        nota:"créditos desembolsados hoy", tag:"HOY" },
-    { valor:"$66,1 M",  titulo:"Colocado en el mes",  nota:"acumulado mes en curso",     tag:"MES" },
+    { valor:"$3,5 M",     titulo:"Colocado hoy",        nota:"créditos desembolsados hoy", tag:"HOY" },
+    { valor:"$69,6 M",  titulo:"Colocado en el mes",  nota:"acumulado mes en curso",     tag:"MES" },
     { valor:"$446,4 K",   titulo:"Recaudado hoy",       nota:"cuotas recibidas hoy",       tag:"HOY" },
-    { valor:"$124,6 M", titulo:"En gestión de cobro", nota:"69 clientes (mora + jurídico)", tag:"MES" },
+    { valor:"$124,7 M", titulo:"En gestión de cobro", nota:"69 clientes (mora + jurídico)", tag:"MES" },
   ],
 
   // --- 02 · DESEMBOLSOS DÍA A DÍA (mes en curso) --- agrega un valor cada día
   mes_actual_label: "Jun",          // mes en curso (etiqueta corta para la gráfica anual y mensual)
   dia_mes:    "junio 2026",
   dia_labels: ["1","2","3","4","5","6","7","8","9","10","11"],
-  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93, 1, 0],   // millones COP por día
+  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93, 1.2, 3.5],   // millones COP por día
   desembolsos_creditos: "8 créditos",   // nº de créditos del mes en curso (texto libre)
 
   // --- 02 · DATOS DEL DÍA (saldo, recaudo) ---
-  saldo_dugomotos:      "$359.019.953",
+  saldo_dugomotos:      "$363.132.093",
   saldo_dugomotos_corte:"Corte 11 jun 2026",
   recaudo_cuotas:       "$51.195.828",
   recaudo_cuotas_periodo:"Jun 2026",
 
   // --- 05 · ESTUDIOS · fila HOY ---
   estudios_hoy: [
-    { valor:"0", nota:"Estudiados hoy" },
+    { valor:"3", nota:"Estudiados hoy" },
     { valor:"0",  nota:"Aprobados hoy" },
-    { valor:"0",  nota:"Legalizados hoy" },
-    { valor:"0",  nota:"Negado por capacidad" },
-    { valor:"0",  nota:"Negado por reporte" },
+    { valor:"1",  nota:"Legalizados hoy" },
+    { valor:"2",  nota:"Negado por capacidad" },
+    { valor:"1",  nota:"Negado por reporte" },
   ],
   // --- 05 · ESTUDIOS · fila MES (acumulado mes) ---
   estudios_mes: [
-    { valor:"189", nota:"Estudiados en el mes" },
+    { valor:"192", nota:"Estudiados en el mes" },
     { valor:"58",  nota:"Aprobados en el mes" },
-    { valor:"9",   nota:"Legalizados en el mes" },
-    { valor:"40",  nota:"Negado por capacidad" },
-    { valor:"90",  nota:"Negado por reporte" },
+    { valor:"10",   nota:"Legalizados en el mes" },
+    { valor:"42",  nota:"Negado por capacidad" },
+    { valor:"91",  nota:"Negado por reporte" },
   ],
 
   // --- 06 · GESTIÓN DE CARTERA (foto del día) ---
@@ -178,10 +178,10 @@ const DATOS = {
   mora_valor:    "$22,9 M",
   mora_clientes: "36 clientes",
   mora_detalle:  "capital adeudado $105,6 M",
-  juridico_valor:   "$102,8 M",
-  juridico_deudores:"35 deudores con saldo",
-  juridico_detalle: "Demanda 16 · Acuerdo 13 · Gestión 6",
-  cobro_total:        "$125,7 M",
+  juridico_valor:   "$101,8 M",
+  juridico_deudores:"32 deudores con saldo",
+  juridico_detalle: "Demanda 16 · Acuerdo 11 · Gestión 5",
+  cobro_total:        "$124,7 M",
   cobro_total_clientes:"69 clientes (mora administrativa + cobro jurídico)",
 
   // --- 07 · PROTECT MOTOS (hoy y en el mes) ---
