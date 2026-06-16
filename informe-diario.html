@@ -131,46 +131,46 @@ const DATOS = {
      =========================================================== */
 
   // --- PORTADA (fecha del día) ---
-  fecha:      "12 de junio de 2026",   // título en cursiva de la portada
-  dia_etq:    "Día: 12 jun 2026",
+  fecha:      "16 de junio de 2026",   // título en cursiva de la portada
+  dia_etq:    "Día: 16 jun 2026",
   mes_curso:  "Mes en curso: junio 2026",
 
   // --- 01 · RESUMEN DEL DÍA (4 indicadores) ---  tag: "HOY" o "MES"
   resumen: [
     { valor:"$0 M",     titulo:"Colocado hoy",        nota:"créditos desembolsados hoy", tag:"HOY" },
-    { valor:"$76,5 M",  titulo:"Colocado en el mes",  nota:"acumulado mes en curso",     tag:"MES" },
-    { valor:"$0 M",   titulo:"Recaudado hoy",       nota:"cuotas recibidas hoy",       tag:"HOY" },
+    { valor:"$84,5 M",  titulo:"Colocado en el mes",  nota:"acumulado mes en curso",     tag:"MES" },
+    { valor:"$4,7 M",   titulo:"Recaudado hoy",       nota:"cuotas recibidas hoy",       tag:"HOY" },
     { valor:"$124,7 M", titulo:"En gestión de cobro", nota:"69 clientes (mora + jurídico)", tag:"MES" },
   ],
 
   // --- 02 · DESEMBOLSOS DÍA A DÍA (mes en curso) --- agrega un valor cada día
   mes_actual_label: "Jun",          // mes en curso (etiqueta corta para la gráfica anual y mensual)
   dia_mes:    "junio 2026",
-  dia_labels: ["1","2","3","4","5","6","7","8","9","10","11","12"],
-  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93, 1.2, 10.3, 0],   // millones COP por día
+  dia_labels: ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],
+  dia_valores:[6.5, 31.53, 0, 13, 0, 0, 0, 0, 13.93, 1.2, 10.3, 8, 0, 0, 0, 0],   // millones COP por día
   desembolsos_creditos: "11 créditos",   // nº de créditos del mes en curso (texto libre)
 
   // --- 02 · DATOS DEL DÍA (saldo, recaudo) ---
-  saldo_dugomotos:      "$369.353.769",
-  saldo_dugomotos_corte:"Corte 11 jun 2026",
-  recaudo_cuotas:       "$56.231.615",
+  saldo_dugomotos:      "$341.128.233",
+  saldo_dugomotos_corte:"Corte 16 jun 2026",
+  recaudo_cuotas:       "$83.071.967",
   recaudo_cuotas_periodo:"Jun 2026",
 
   // --- 05 · ESTUDIOS · fila HOY ---
   estudios_hoy: [
-    { valor:"4", nota:"Estudiados hoy" },
-    { valor:"0",  nota:"Aprobados hoy" },
+    { valor:"6", nota:"Estudiados hoy" },
+    { valor:"4",  nota:"Aprobados hoy" },
     { valor:"0",  nota:"Legalizados hoy" },
-    { valor:"1",  nota:"Negado por capacidad" },
-    { valor:"3",  nota:"Negado por reporte" },
+    { valor:"0",  nota:"Negado por capacidad" },
+    { valor:"2",  nota:"Negado por reporte" },
   ],
   // --- 05 · ESTUDIOS · fila MES (acumulado mes) ---
   estudios_mes: [
-    { valor:"219", nota:"Estudiados en el mes" },
-    { valor:"67",  nota:"Aprobados en el mes" },
-    { valor:"11",   nota:"Legalizados en el mes" },
-    { valor:"47",  nota:"Negado por capacidad" },
-    { valor:"104",  nota:"Negado por reporte" },
+    { valor:"265", nota:"Estudiados en el mes" },
+    { valor:"91",  nota:"Aprobados en el mes" },
+    { valor:"13",   nota:"Legalizados en el mes" },
+    { valor:"49",  nota:"Negado por capacidad" },
+    { valor:"124",  nota:"Negado por reporte" },
   ],
 
   // --- 06 · GESTIÓN DE CARTERA (foto del día) ---
@@ -186,15 +186,15 @@ const DATOS = {
 
   // --- 07 · PROTECT MOTOS (hoy y en el mes) ---
   protect_realizados_hoy: 0,
-  protect_realizados_mes: 35,
-  protect_rc_hoy: 7,
-  protect_rc_mes: 22,
-  protect_ap_hoy: 3,
-  protect_ap_mes: 12,
+  protect_realizados_mes: 46,
+  protect_rc_hoy: 0,
+  protect_rc_mes: 30,
+  protect_ap_hoy: 0,
+  protect_ap_mes: 14,
   protect_recaudo_dugo_hoy: "$0",   // valor en pesos (ej. "$1.250.000")
-  protect_recaudo_dugo_mes: "$13.292.844",   // valor en pesos
-  protect_banco_hoy: "$250.322",          // dinero recaudado en el banco hoy (pesos)
-  protect_banco_mes: "$4.890.228",          // dinero recaudado en el banco en el mes (pesos)
+  protect_recaudo_dugo_mes: "$22.054.791",   // valor en pesos
+  protect_banco_hoy: "$744.900",          // dinero recaudado en el banco hoy (pesos)
+  protect_banco_mes: "$8.500.000",          // dinero recaudado en el banco en el mes (pesos)
 
 
   /* ===========================================================
@@ -220,7 +220,7 @@ const DATOS = {
   legal_destacar: [false,false,false,true,true,false],
   legal_acumulado:"221",
   score_labels:   ["0–500","501–600","601–700","701–800",">800"],
-  score_valores:  [0, 0, 2, 3, 6],
+  score_valores:  [0, 0, 3, 4, 6],
 
   // --- 07 · PROTECT · contratos por mes (meses cerrados) ---
   // El mes en curso se calcula solo = "protect_realizados_mes" (zona diaria).
